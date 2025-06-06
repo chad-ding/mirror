@@ -1,0 +1,25 @@
+{
+    "files.eol": "\n",
+    "files.insertFinalNewline": true,
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+        "source.fixAll": "explicit"
+    },
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "prettier.configPath": "",
+    "prettier.disableLanguages": ["javascript", "javascriptreact", "css", "less", "vue"],
+    "javascript.format.enable": false,
+    "css.validate": false,
+    "less.validate": false,
+    "vetur.format.enable": false,
+    "eslint.nodePath": "",
+    "eslint.options": {
+        "configFile": ""
+    },
+    "[html]": {
+        "editor.formatOnSave": false
+    },
+    "[svg]": {
+        "editor.defaultFormatter": "jock.svg"
+    }
+}
