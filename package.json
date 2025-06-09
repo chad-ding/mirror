@@ -64,8 +64,8 @@
         "svg-inline-loader": "^0.8.2",
         "template-string-optimize-loader": "^3.0.0",
         "url-loader": "^4.1.0",
-        "vue-style-loader": "3.0.3",
         "vue-loader": "^15.9.3",
+        "vue-style-loader": "3.0.3",
         "vue-template-compiler": "^2.6.12",
         "webpack": "^5.88.2",
         "webpack-cli": "5.1.4",
@@ -75,6 +75,10 @@
     "dependencies": {
         "core-js": "^3.37.0",
         "danmu.js": "^1.1.13",
-        "js-cookie": "^3.0.5"
+        "dashjs": "^5.0.3",
+        "flv.js": "^1.6.2",
+        "hls.js": "^1.6.5",
+        "js-cookie": "^3.0.5",
+        "webtorrent": "^2.6.8"
     }
 }
