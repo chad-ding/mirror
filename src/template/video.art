@@ -1,0 +1,12 @@
+<video
+    class="mirror-video {{ if current }}mirror-video-current{{ /if }}"
+	style="touch-action: manipulation; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);"
+    tabindex="-1"
+	webkit-playsinline
+	playsinline="playsinline"
+    nosrc
+	{{ if poster }}poster="{{ poster }}"{{ /if }}
+    {{ if url }}src="{{ url }}" {{ /if }}
+	id="{{ id }}"
+>
+</video>

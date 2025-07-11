@@ -1,0 +1,39 @@
+.mirror-head {
+    align-items: center;
+    background: linear-gradient(rgba(89, 89, 89, 0.74), transparent);
+    height: 171px;
+    left: 0;
+    padding: 0 48px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    display: none;
+    z-index: 4;
+
+    &.show {
+        display: flex;
+    }
+
+    &-back {
+        height: 72px;
+        margin-right: 24px;
+        width: 72px;
+        outline: none;
+        border: none;
+        background-color: transparent;
+    }
+
+    &-title {
+        position: relative;
+        flex-grow: 1;
+
+        &-text {
+            font-size: 48px;
+            line-height: 72px;
+            color: #fff;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+    }
+}

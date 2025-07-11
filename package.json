@@ -1,7 +1,7 @@
 {
-    "name": "feng-player",
-    "version": "0.0.1",
-    "description": "阿锋H5视频播放器",
+    "name": "mirror",
+    "version": "1.0.0",
+    "description": "H5视频播放器",
     "main": "dist/index.js",
     "scripts": {
         "start": "cd ./vue && npm run dev",
@@ -9,8 +9,7 @@
         "build:lib": "cross-env NODE_ENV=production webpack --config webpack.config.js --progress",
         "build:css": "gulp --gulpfile gulpfile.js",
         "release": "npm run build && npm publish",
-        "beta": "npm run build && npm publish --tag beta",
-        "demo": "cd ./vue && npm run pub"
+        "beta": "npm run build && npm publish --tag beta"
     },
     "lint-staged": {
         "**/*": "prettier --write --ignore-unknown"
@@ -73,12 +72,6 @@
         "yorkie": "^2.0.0"
     },
     "dependencies": {
-        "core-js": "^3.37.0",
-        "danmu.js": "^1.1.13",
-        "dashjs": "^5.0.3",
-        "flv.js": "^1.6.2",
-        "hls.js": "^1.6.5",
-        "js-cookie": "^3.0.5",
-        "webtorrent": "^2.6.8"
+        "core-js": "^3.37.0"
     }
 }

@@ -1,0 +1,73 @@
+@import '_variable.less';
+
+// 与控制栏进行联动
+.mirror-hide-controller {
+    .mirror-bezel {
+        &-progress-bar {
+            bottom: 0;
+        }
+    }
+}
+
+.mirror-bezel {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    font-size: 22px;
+    z-index: 3;
+
+    &-progress-bar {
+        height: 6px;
+        width: 100%;
+        bottom: -6px;
+        background-color: rgba(255, 255, 255, 0.2);
+        position: absolute;
+        border-radius: 3px;
+        transition: bottom 300ms cubic-bezier(0.4, 0, 0.6, 1);
+
+        &-played {
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.6);
+            border-top-left-radius: 3px;
+            border-bottom-left-radius: 3px;
+        }
+    }
+
+    .mirror-bezel-icon {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        height: 144px;
+        width: 144px;
+        transform: translate(-50%, -50%);
+        box-sizing: border-box;
+    }
+
+    .mirror-loading-icon {
+        display: none;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        pointer-events: none;
+        width: 144px;
+        height: 144px;
+        transform-origin: center;
+        animation: loading 1s linear infinite;
+
+        .diplayer-loading-hide {
+            display: none;
+        }
+
+        @keyframes loading {
+            0% {
+                /*rotate(2D旋转) scale(放大或者缩小) translate(移动) skew(翻转)*/
+                transform: translate(-50%, -50%) rotate(0deg);
+            }
+            100% {
+                transform: translate(-50%, -50%) rotate(360deg);
+            }
+        }
+    }
+}

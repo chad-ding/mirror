@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width,initial-scale=1.0" />
+		<link rel="icon" href="<%= BASE_URL %>favicon.ico" />
+		<title><%= htmlWebpackPlugin.options.title %></title>
+		<script type="text/javascript" charset="utf-8">
+			/**
+			 * 类 flexible 移动端适配方案，1rem = 100 设计稿 px
+			 * 设计稿宽度/100 rem = 理想视口宽度
+			 * postcss plugin postcss-px2rem 进行 px -> rem 的编译转换
+			 */
+			;(function (win, doc) {
+				var ua = win.navigator.userAgent
+				var tid = null
+				var dpr = devicePixelRatio === 4 ? 1 : devicePixelRatio
+				var docEl = doc.documentElement
+				var delay = 300 // 延迟执行 rem 刷新至 DOM 结构稳定后执行
+				var maxWidth = 510 // 最大宽度限制
+				var designScale = (docEl.dataset.width || 1080) / 100 // index.html 中 data-width 填入设计图尺寸
+				var h = document.getElementsByTagName('head')[0],
+					d = document.createElement('div')
+
+				d.style.width = '1rem'
+				d.style.display = 'none'
+				h.appendChild(d)
+				var rootFontSize = parseFloat(getComputedStyle(d, null).getPropertyValue('width'))
+
+				var refreshRem = function (isLandscape, source = {}) {
+					isLandscape = isLandscape || isScreenLandscape()
+					var devicePixelRatio = win.devicePixelRatio
+					console.info('设置根字体: ', isLandscape, source)
+
+					var width =
+						isLandscape 
+							? source.screenHeight / devicePixelRatio || docEl.clientHeight
+							: source.screenWidth / devicePixelRatio || docEl.clientWidth
+					var height = source.screenHeight / devicePixelRatio || docEl.clientHeight
+
+					if (width / dpr > maxWidth) {
+						width = maxWidth
+					}
+
+					var screenWidth =
+						width > 510
+							? 640
+							: isLandscape
+							? win.innerHeight
+							: win.innerWidth
+					var ratio =  width > 510 ? 360 / screenWidth : 1
+					var fs = ((ratio * width) / designScale / rootFontSize) * 100 + '%'
+					docEl.style.fontSize = fs
+
+					/**
+					 * 1. 欲使 (设计稿宽度/100) rem = 理想视口宽度 = width，所以 1 rem = width / (设计稿宽度/100) = width / designScale
+					 * 2. 如果使用 px 单位，页面字体大小会随系统字体大小缩放，而页面字体缩放会破坏布局，故采用与 rootFontSize 的百分比来避免这个问题
+					 */
+					// docEl.style.fontSize = (width / designScale / rootFontSize) * 100 + '%'
+				}
+
+				// 当前是否横屏
+				function isScreenLandscape() {
+					if (screen.orientation && typeof screen.orientation.angle === 'number') {
+						return Math.abs(screen.orientation.angle) === 90
+					}
+
+					if (typeof window.orientation === 'number') {
+						return Math.abs(window.orientation) === 90
+					}
+
+					if (screen.availWidth && screen.availHeight) {
+						return screen.availWidth > screen.availHeight
+					}
+
+					return screen.width > screen.height
+				}
+
+				// 监控屏幕方向变化
+				function onOrientationChange(options) {
+					var callback = options.callback
+					var immediate = !!options.immediate
+					var isLandscape = isScreenLandscape()
+					var supportOrientationchange = 'onorientationchange' in window
+
+					function listener() {
+						var currentIslandscape = isScreenLandscape()
+
+						if (supportOrientationchange) {
+							var viewportWidth = document.documentElement.clientWidth
+							var viewportHeight = document.documentElement.clientHeight
+
+							// 解决游戏中心webview中横竖屏切换时，要延迟一段时间才能正确获取viewport尺寸的bug
+							if (
+								(currentIslandscape && viewportWidth <= viewportHeight) ||
+								(!currentIslandscape && viewportWidth > viewportHeight)
+							) {
+								// resize会多次触发，只对最后一次进行处理
+								var timer
+								window.addEventListener('resize', function listener() {
+									if (timer) {
+										clearTimeout(timer)
+									}
+									timer = setTimeout(function () {
+										window.removeEventListener('resize', listener)
+										callback()
+										timer = undefined
+									}, 100)
+								})
+								return
+							}
+
+							callback(currentIslandscape)
+							return
+						}
+
+						// 方向未变
+						if (currentIslandscape === isLandscape) {
+							return
+						}
+
+						isLandscape = currentIslandscape
+						callback(isLandscape)
+					}
+
+					// 立即获取
+					if (immediate) {
+						callback(isLandscape)
+					}
+
+					// 画中画reszie触发可能在orientationchange之前
+					var listenerName = supportOrientationchange ? 'orientationchange' : 'resize'
+					window.addEventListener(listenerName, () => {
+						setTimeout(() => {
+							listener()
+						}, 100)
+					})
+
+					if (listenerName == 'orientationchange') {
+						window.addEventListener('resize', listener)
+					}
+
+					return function () {
+						window.removeEventListener(listenerName, listener)
+						if (listenerName == 'orientationchange') {
+							window.removeEventListener('resize', listener)
+						}
+					}
+				}
+
+				win.refreshRem = refreshRem
+
+				docEl.dataset.dpr = dpr
+
+				win.addEventListener('pageshow', function (e) {
+					if (e.persisted) {
+						clearTimeout(tid)
+						tid = setTimeout(refreshRem, delay)
+					}
+				})
+
+				win.addEventListener('DOMContentLoaded', function (e) {
+					// 等待 DOM API 就绪后再刷新 rem，否则部分机型 rem 设置出错
+					refreshRem()
+				})
+
+				onOrientationChange({
+					immediate: true,
+					callback: window.refreshRem
+				})
+			})(window, document)
+		</script>
+
+		<style>
+			html,
+			body {
+				width: 100%;
+				background-color: #f1f1f1;
+				height: 100%;
+			}
+
+			* {
+				padding-inline-start: 0;
+				margin-block-start: 0;
+				margin-block-end: 0;
+				margin: 0;
+				box-sizing: border-box;
+				-webkit-margin-before: 0;
+				-webkit-margin-after: 0;
+				-webkit-margin-start: 0px;
+				-webkit-margin-end: 0px;
+				-webkit-padding-start: 0;
+			}
+		</style>
+	</head>
+	<body>
+		<noscript>
+			<strong>
+				We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript
+				enabled. Please enable it to continue.
+			</strong>
+		</noscript>
+		<div id="app"></div>
+		<!-- built files will be auto injected -->
+	</body>
+</html>

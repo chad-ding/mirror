@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="144" height="144" viewBox="0 0 144 144" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+<title>播放</title>
+<g filter="url(#filter0_d_442_480)">
+<path d="M114.4 67.8433C117.6 69.6908 117.6 74.3096 114.4 76.1571L49.6001 113.569C46.4001 115.417 42.4001 113.108 42.4001 109.412L42.4001 34.5879C42.4001 30.8928 46.4001 28.5835 49.6001 30.431L114.4 67.8433Z" fill="white"/>
+</g>
+<defs>
+<filter id="filter0_d_442_480" x="-12.8" y="-12.8" width="169.6" height="169.6" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+<feOffset/>
+<feGaussianBlur stdDeviation="6.4"/>
+<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
+<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_442_480"/>
+<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_442_480" result="shape"/>
+</filter>
+</defs>
+</svg>
+

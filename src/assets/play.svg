@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="144" height="144" viewBox="0 0 144 144" fill="none" xmlns="http://www.w3.org/2000/svg">
+<title>暂停</title>
+<g filter="url(#filter0_d_442_479)">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M43.1999 28.7998C40.5489 28.7998 38.3999 30.9488 38.3999 33.5998V110.4C38.3999 113.051 40.5489 115.2 43.1999 115.2H52.7999C55.4509 115.2 57.5999 113.051 57.5999 110.4V33.5998C57.5999 30.9488 55.4509 28.7998 52.7999 28.7998H43.1999ZM91.2 28.8C88.549 28.8 86.4 30.949 86.4 33.6V110.4C86.4 113.051 88.549 115.2 91.2 115.2H100.8C103.451 115.2 105.6 113.051 105.6 110.4V33.6C105.6 30.949 103.451 28.8 100.8 28.8H91.2Z" fill="white"/>
+</g>
+<defs>
+<filter id="filter0_d_442_479" x="-12.8" y="-12.8" width="169.6" height="169.6" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+<feOffset/>
+<feGaussianBlur stdDeviation="6.4"/>
+<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
+<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_442_479"/>
+<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_442_479" result="shape"/>
+</filter>
+</defs>
+</svg>

@@ -1,0 +1,33 @@
+.mirror-toast {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 9999;
+    transform: translateY(-100%);
+
+    &.show {
+        transition: transform 500ms cubic-bezier(0.28, 0.6, 0.2, 1);
+        transform: translateY(48px);
+    }
+
+    &.hide {
+        transition: transform 250ms cubic-bezier(0.25, 0.1, 0.25, 1);
+        transform: translateY(-100%);
+    }
+
+    .toast-content {
+        background-color: #fff;
+        border-radius: 51px;
+        box-shadow: 9px 39px 150px 0px rgba(0, 0, 0, 0.07);
+        color: #000;
+        font-size: 42px;
+        font-weight: 650;
+        line-height: 49px;
+        max-width: 984px;
+        padding: 60px;
+        text-align: center;
+    }
+}

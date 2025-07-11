@@ -1,0 +1,68 @@
+{{if options.head != 0}}
+<div class="mirror-head">
+	<button class="mirror-head-back">
+	 {{@ icons.back }}
+	</button>
+	<div class="mirror-head-title">
+		{{if options.title}}
+			<p class="mirror-head-title-text"><%= options.title %></p>
+		{{/if}}
+	</div>
+</div>
+{{ /if }}
+<div class="mirror-video-wrap">
+    {{ include './video.art' video }}
+    <div class="mirror-bezel">
+		{{ if mobile }}
+        	<span class="mirror-bezel-icon"></span>
+		{{ /if }}
+        <span class="mirror-loading-icon">
+		{{@ icons.loading }}
+		</span>
+    </div>
+	{{ if !options.live}}
+		<div class="mirror-bezel-progress-bar">
+			<div class="mirror-bezel-progress-bar-played"></div>
+		</div>
+	{{ /if }}
+</div>
+<div class="mirror-controller{{ if !options.controls }} mirror-controller-hide{{ /if }}">
+    <div class="mirror-icons">
+		{{ if !mobile }}
+			<button class="mirror-icon mirror-play-icon">
+			{{@ icons.pause }}
+			</button>
+		{{ /if }}
+		<button class="mirror-icon mirror-volume-icon">
+			{{@ icons.volumeUp }}
+		</button>
+    </div>
+	<div class="mirror-bar-wrap">
+		{{ if !options.live }}
+			<span class="mirror-ptime">0:00</span>
+			<div class="mirror-bar">
+				<div class="mirror-loaded" style="width: 0;"></div>
+				<div class="mirror-played" style="width: 0;">
+					<span class="mirror-thumb"></span>
+				</div>
+			</div>
+			<span class="mirror-dtime">0:00</span>
+		{{ /if }}
+    </div>
+    <div class="mirror-icons">
+        <button class="mirror-icon mirror-quality-icon"></button>
+		<button class="mirror-icon mirror-full-icon">
+			{{@ icons.full }}
+		</button>
+    </div>
+</div>
+<div class="mirror-quality-mask">
+	<div class="mirror-quality-list"></div>
+</div>
+<div class="mirror-toast">
+	<p class="toast-content"></p>
+</div>
+<div class="mirror-error">
+	<p class="mirror-error-text">视频播放失败<p/>
+	<button class="mirror-btn mirror-error-btn">重试</button>
+</div>

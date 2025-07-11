@@ -1,0 +1,62 @@
+{
+	"name": "debug",
+	"version": "1.1.0",
+	"private": true,
+	"scripts": {
+		"dev": "vue-cli-service serve --mode dev --open",
+		"lint": "vue-cli-service lint",
+		"build": "vue-cli-service build --mode=production --target lib --name index.vue --dest ../dist ./player/index.js"
+	},
+	"dependencies": {
+		"core-js": "^3.8.3",
+		"vue": "^2.7.16",
+		"vue-router": "^3.6.5"
+	},
+	"devDependencies": {
+		"@babel/core": "^7.12.16",
+		"@babel/eslint-parser": "^7.12.16",
+		"@vue/cli-plugin-babel": "~5.0.0",
+		"@vue/cli-plugin-eslint": "~5.0.0",
+		"@vue/cli-service": "~5.0.0",
+		"babel-eslint": "^10.1.0",
+		"eslint": "^7.32.0",
+		"eslint-config-prettier": "^6.15.0",
+		"eslint-config-standard": "^16.0.3",
+		"eslint-plugin-html": "^6.2.0",
+		"eslint-plugin-import": "^2.25.4",
+		"eslint-plugin-node": "^11.1.0",
+		"eslint-plugin-prettier": "^3.4.1",
+		"eslint-plugin-promise": "^4.3.1",
+		"eslint-plugin-vue": "^8.0.3",
+		"less": "^4.2.0",
+		"less-loader": "^11.1.3",
+		"lint-staged": "^13.3.0",
+		"mini-css-extract-plugin": "2.7.6",
+		"postcss": "^8.4.27",
+		"postcss-loader": "^7.3.3",
+		"postcss-preset-env": "^9.1.1",
+		"postcss-pxtorem": "^6.1.0",
+		"prettier-check": "^2.0.0",
+		"pretty-quick": "^3.0.0",
+		"strip-loader": "^0.1.2",
+		"style-loader": "^3.3.3",
+		"svg-inline-loader": "0.8.2",
+		"template-string-optimize-loader": "^3.0.0",
+		"url-loader": "^4.1.0",
+		"vue-svg-inline-loader": "^2.1.5"
+	},
+	"eslintConfig": {
+		"root": true,
+		"env": {
+			"node": true
+		},
+		"extends": [
+			"plugin:vue/vue3-essential",
+			"eslint:recommended"
+		],
+		"parserOptions": {
+			"parser": "@babel/eslint-parser"
+		},
+		"rules": {}
+	}
+}
