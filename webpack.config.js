@@ -62,7 +62,7 @@ module.exports = {
                     }
                 },
                 generator: {
-                    filename: 'assets/image/[contenthash][ext][query]' // 打包后会放到img文件夹下  hash缓存
+                    filename: 'assets/image/[contenthash][ext][query]' // 打包后会放到img文件夹下
                 }
             },
             {

@@ -1,6 +1,6 @@
-import Engine from './engine';
+import Core from './core';
 
-export default class extends Engine {
+export default class extends Core {
     constructor(container, options) {
         super(container, options);
 
