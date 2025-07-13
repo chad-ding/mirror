@@ -11,6 +11,7 @@ import LoadingDetect from './loading-detect';
 import Controller from './controller';
 import Decoder from './decoder';
 import Icons from './icons';
+import getSourceType from './source';
 
 import tplVideo from '../template/video.art';
 
@@ -211,15 +212,7 @@ export default class {
             }
         } else {
             if (this.type === 'auto') {
-                if (/\.m3u8(#|\?|$)/i.exec(video.src)) {
-                    this.type = 'hls';
-                } else if (/\.flv(#|\?|$)/i.exec(video.src)) {
-                    this.type = 'flv';
-                } else if (/\.mpd(#|\?|$)/i.exec(video.src)) {
-                    this.type = 'dash';
-                } else {
-                    this.type = 'normal';
-                }
+                this.type = getSourceType(video.src, this.type);
             }
             this.decoder = new Decoder(video, this.type, this.options);
         }
